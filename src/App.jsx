@@ -1,35 +1,63 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { increment, decrement, reset, incrementByAmount } from './app/counterSlice';
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
+  // Selects the current count from the Redux store
+  const count = useSelector((state) => state.counter.count);
+  // Dispatches actions to the Redux store
+  const dispatch = useDispatch();
+  // Manages the input for incrementing by a specific amount
+  const [incrementAmount, setIncrementAmount] = useState(0);
+
+  // Converts the input string to a number, defaults to 0 if invalid
+  const addValue = Number(incrementAmount) || 0;
+
+  // Handles the increment action
+  const handleIncrement = () => {
+    dispatch(increment());
+  };
+
+  // Handles the decrement action
+  const handleDecrement = () => {
+    dispatch(decrement());
+  };
+
+  // Handles the reset action and clears the input field
+  const handleReset = () => {
+    setIncrementAmount(0);
+    dispatch(reset());
+  };
+
+  // Handles the increment by amount action and clears the input field
+  const handleAddByAmount = () => {
+    dispatch(incrementByAmount(addValue));
+    setIncrementAmount(0);
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
+    <div className="App">
+      <h1>Redux Toolkit Counter</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+        <p>Count: {count}</p>
+        <div className="buttons">
+          <button onClick={handleIncrement}>Increment</button>
+          <button onClick={handleDecrement}>Decrement</button>
+          <button onClick={handleReset}>Reset</button>
+        </div>
+        <div className="add-by-amount">
+          <input
+            type="number"
+            value={incrementAmount}
+            onChange={(e) => setIncrementAmount(e.target.value)}
+            placeholder="Enter amount"
+          />
+          <button onClick={handleAddByAmount}>Add by Amount</button>
+        </div>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
