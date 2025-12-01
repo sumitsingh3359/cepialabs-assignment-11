@@ -1,5 +1,5 @@
 // Import the createSlice API from Redux Toolkit
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 // Define the initial state for the counter slice
 const initialState = {
@@ -8,7 +8,7 @@ const initialState = {
 
 // Create a Redux slice for the counter
 export const counterSlice = createSlice({
-  name: 'counter',
+  name: "counter",
   initialState,
   // Define the reducers with their corresponding actions
   reducers: {
@@ -32,7 +32,8 @@ export const counterSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { increment, decrement, reset, incrementByAmount } = counterSlice.actions;
+export const { increment, decrement, reset, incrementByAmount } =
+  counterSlice.actions;
 
 // Export the reducer to be included in the store
 export default counterSlice.reducer;
