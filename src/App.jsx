@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { increment, decrement, reset, incrementByAmount } from './app/counterSlice';
-import './App.css';
 
 function App() {
   // Selects the current count from the Redux store

@@ -26,6 +26,8 @@ body {
   margin: 0;
   display: flex;
   place-items: center;
+  align-items: center;
+  justify-content: center;
   min-width: 320px;
   min-height: 100vh;
 }
@@ -52,6 +54,61 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+/* Counter specific styles */
+.App {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.card {
+  padding: 2em;
+  border: 1px solid #646cff;
+  border-radius: 8px;
+  background-color: #1a1a1a;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  align-items: center;
+}
+
+.buttons button {
+  margin: 0 0.5em;
+}
+
+.add-by-amount {
+  display: flex;
+  gap: 0.5em;
+  margin-top: 1em;
+}
+
+.add-by-amount input {
+  padding: 0.6em 1.2em;
+  border-radius: 8px;
+  border: 1px solid #646cff;
+  background-color: #242424;
+  color: white;
+  font-size: 1em;
+}
+
+.add-by-amount input:focus {
+  outline: none;
+  border-color: #535bf2;
+}
+
+.add-by-amount button {
+  background-color: #646cff;
+  color: white;
+  border: none;
+}
+
+.add-by-amount button:hover {
+  background-color: #535bf2;
 }
 
 @media (prefers-color-scheme: light) {
